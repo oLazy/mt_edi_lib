@@ -41,3 +41,17 @@ set_target_properties(Boost_program_options PROPERTIES
         IMPORTED_LOCATION "${Boost_LIBRARY_DIRS}/libboost_program_options.a")
 
 add_subdirectory(edi_parser)
+
+add_executable(edimtlibdriver main.cpp)
+target_include_directories(edimtlibdriver PUBLIC ${Boost_INCLUDE_DIRS})
+
+
+target_link_libraries(edimtlibdriver PUBLIC
+        myMtParser
+        Boost_iostreams
+        Boost_system
+        Boost_serialization
+        Boost_filesystem
+        Boost_timer
+        Boost_chrono
+        Boost_program_options)

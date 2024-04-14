@@ -16,7 +16,24 @@
 //Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <iostream>
-#include
+#include "edi_parser/Parser.h"
+#include "edi_parser/JParser.h"
+#include <boost/filesystem.hpp>
+
+enum class FileType{EDI, J, OTHER};
+
 int main(int argc, char* argv[]){
-    std::cout << "hello, world!\n";
+    if (argc < 2) throw std::runtime_error("at least one .edi file must be provided.");
+    std::string filename(argv[1]);
+    std::string ext{boost::filesystem::extension(filename)};
+    FileType ft;
+    if(ext == ".edi") {ft = FileType::EDI;}
+    else if(ext == ".j") {ft = FileType::J;}
+    else {ft = FileType::OTHER;}
+    switch (ft) {
+        case FileType::EDI: {
+
+        }
+
+    }
 };

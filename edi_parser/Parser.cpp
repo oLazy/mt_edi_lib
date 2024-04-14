@@ -6,7 +6,9 @@
 #include <exception>
 #include <iostream>
 #include <sstream>
+#include <fstream>
 #include <cmath>
+#include <strstream>
 
 namespace MTparser {
     void Parser::parse(vector<Token> &t){
@@ -119,5 +121,11 @@ namespace MTparser {
             }
         }
         return res;
+    }
+
+    std::string getContentsFromFile(std::ifstream &f) {
+        std::ostrstream sstr;
+        sstr << f.rdbuf();
+        return sstr.str();
     }
 }

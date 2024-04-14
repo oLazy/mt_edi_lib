@@ -2,8 +2,8 @@
 // Created by eric on 16/04/2021.
 //
 
-#ifndef MTPARSER_PARSER_H
-#define MTPARSER_PARSER_H
+#ifndef MTPARSER_JPARSER_H
+#define MTPARSER_JPARSER_H
 #include "JTokenizer.h"
 #include <map>
 #include <tuple>
@@ -16,7 +16,7 @@ namespace MTparser {
     enum dataMap{begin = 0, period = 0, real = 1, imag = 2, error = 3, weight = 4, end = 5};
     enum dataMapApp{begin_a = 0, period_a = 0, rho = 1, pha = 2, rhomax = 3, rhomin = 4, phamax = 5, phamin = 6, wrho = 7, wpha = 8, end_a = 9};
 
-    class Parser {
+    class JParser {
     public:
         void parse(string const&);
         void printInfoBlock();
@@ -36,4 +36,4 @@ namespace MTparser {
     };
 }
 
-#endif //MTPARSER_PARSER_H
+#endif //MTPARSER_JPARSER_H

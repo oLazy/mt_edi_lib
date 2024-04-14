@@ -8,7 +8,7 @@
 #include <iostream>
 #include <sstream>
 namespace MTparser {
-    void Parser::parse(const string &fileContents) {
+    void JParser::parse(const string &fileContents) {
         vector<Token> tokens = tokenizer.parse(fileContents);
         parse(tokens);
     }
@@ -17,7 +17,7 @@ namespace MTparser {
 //! As j-format is used but never completely defined, this function is currently written to support EM needs.
 //! Particularly, here the sole kind of MT data considered is the impedance tensor Z.
 //! \param t string of tokens to parse
-    void Parser::parse(vector<Token> &t) {
+    void JParser::parse(vector<Token> &t) {
         for (auto ti = t.begin(); ti != t.end(); ti++) {
             if (ti->type == MTparser::KEYWORD) {// I am parsing the info block
                 auto keyword = ti->text;
@@ -69,17 +69,17 @@ namespace MTparser {
         }
     }
 
-    void Parser::printInfoBlock() {
+    void JParser::printInfoBlock() {
         for (auto t:informationBlock){
             std::cout << t.first << "=" << t.second << "\n";
         }
     }
 
-    Data_Table Parser::getDataFor(const string& e) {
+    Data_Table JParser::getDataFor(const string& e) {
         return dataBlock[e];
     }
 
-    unsigned Parser::getNfreq() const {
+    unsigned JParser::getNfreq() const {
         return nfreq;
     }
 

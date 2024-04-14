@@ -14,6 +14,7 @@ namespace MTparser {
     typedef map<string ,string > Option_list;
     typedef map<string,tuple<Option_list , Data_set>> Data_block;
 
+    std::string getContentsFromFile(std::ifstream &f);
     /**
      * @param dataset [in]: the Data_set (std::vector<std::string>) to convert into a std::vector<double>
      * @param skip [in, optional]: if a datum matches this value, it is converted into a nan

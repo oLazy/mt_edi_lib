@@ -16,7 +16,7 @@ if (Boost_FOUND)
     message("VERSION: ${Boost_VERSION}")
 endif()
 
-#find_package(ROOT COMPONENTS RooStats)
+##find_package(ROOT COMPONENTS RooStats)
 add_library(Boost_iostreams STATIC IMPORTED)
 add_library(Boost_serialization STATIC IMPORTED)
 add_library(Boost_system STATIC IMPORTED)
@@ -47,7 +47,7 @@ target_include_directories(edimtlibdriver PUBLIC ${Boost_INCLUDE_DIRS})
 
 
 target_link_libraries(edimtlibdriver PUBLIC
-        myMtParser
+        EMP
         Boost_iostreams
         Boost_system
         Boost_serialization

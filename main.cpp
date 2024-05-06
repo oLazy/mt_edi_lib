@@ -23,7 +23,7 @@
 enum class FileType{EDI, J, OTHER};
 
 int main(int argc, char* argv[]){
-    if (argc < 2) throw std::runtime_error("at least one .edi file must be provided.");
+    if (argc < 2) throw std::runtime_error("at least one input file must be provided.");
     std::string filename(argv[1]);
     std::string ext{boost::filesystem::extension(filename)};
     FileType ft;
@@ -34,6 +34,11 @@ int main(int argc, char* argv[]){
         case FileType::EDI: {
 
         }
+        case FileType::J: {
 
+        }
+        case FileType::OTHER: {
+
+        }
     }
 };

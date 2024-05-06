@@ -19,6 +19,8 @@
 
 #include <string>
 #include <boost/filesystem.hpp>
+
+
 class MTParser {
 public:
     /**
@@ -32,8 +34,22 @@ public:
      * @return std::string containing the file extension
      */
     std::string getInputFileExtension();
-    virtual void parse(std::string const&) = 0;
+    /**
+     * @brief pure virtual method to parse the file at path. EDI, J and (possibly) other parser must each implement its own parse method
+     */
+    virtual void parse() = 0;
+    /**
+     * @brief pure virtual method to print on screen the info block. Since different format implement info block in different way, This must be implemented in each of them.
+     */
     virtual void printInfoBlock() = 0;
+    /**
+     * @brief interface method to expose parsed data
+     * @param what data vector of interest
+     * @param unavailableToNaN both edi and j file formats define a constant for non available readings.
+     * This will change any unavailable data in a NaN in the return vector
+     * @return vector of readings in crescent period order. Real and Imaginary parts of the impedance tensor components must be get independently.
+     */
+    virtual std::vector<double> get(std::string const& what, bool unavailableToNaN) = 0;
 protected:
     const boost::filesystem::path inputPath;
     const std::string fileContent;
